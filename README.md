@@ -26,6 +26,7 @@ You can create an anaconda environment called `meta-avatar` using
 ```
 conda env create -f environment.yml
 conda activate meta-avatar
+```
 
 (Optional) if you want to use the evaluation code under `evaluation/`, then you need to install kaolin. Download the code from the [kaolin repository](https://github.com/NVIDIAGameWorks/kaolin.git), checkout to commit e7e513173bd4159ae45be6b3e156a3ad156a3eb9 and install it according to the instructions.
 
