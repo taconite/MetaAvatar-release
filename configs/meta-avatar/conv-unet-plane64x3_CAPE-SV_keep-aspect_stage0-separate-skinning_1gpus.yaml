@@ -1,0 +1,50 @@
+method: metaavatar
+data:
+  dim: 3
+  dataset: cape_corr 
+  path: data/CAPE_sampling-rate-5
+  input_type: pointcloud
+  input_pointcloud_n: 5000
+  input_pointcloud_noise: 0.0
+  use_aug: true
+  normalized_scale: true
+  train_split: ['00032', '00096', '00127', '00145', '02474', '03223', '03284', '03331', '03383', '03394']
+  val_split: ['00122', '00134', '00215', '03375']
+  test_split: ['00122', '00134', '00215', '03375']
+  single_view: true
+  use_raw_scans: false
+model:
+  encoder: pointnet_conv
+  skinning_decoder: unstructured_groupnorm
+  decoder: single_bvp
+  encoder_kwargs: {'hidden_dim': 256, 'scatter_type': mean, 'unet': true, 'unet3d': false, 'plane_type': ['xz', 'xy', 'yz'], 'plane_resolution': 64, 'padding': 1.0}
+  decoder_kwargs: {'in_features': 3, 'num_hidden_layers': 5}
+  skinning_decoder_kwargs: {'hidden_size': 1024, 'gn_groups': 32}
+  keep_aspect_ratio: true
+  c_dim: 96
+  z_dim: 0
+training:
+  gpus: [0]
+  out_dir:  out/meta-avatar/conv-unet-plane64x3_CAPE-SV_keep-aspect_stage0-separate-skinning_1gpus
+  batch_size: 12
+  model_selection_metric: dist
+  model_selection_mode: minimize
+  visualize_every: 20000
+  validate_every: 20000
+  backup_every: 20000
+  max_iterations: 200000
+  stage: skinning_weights
+  lr: 0.0001
+  inner_lr: 0.0001
+test:
+  threshold: 0.5
+  # model_file: model.pt
+generation:
+  batch_size: 1
+  refine: false
+  vis_n_outputs: 10000
+  n_x: 128
+  n_z: 1
+  resolution_0: 256
+  upsampling_steps: 0
+
