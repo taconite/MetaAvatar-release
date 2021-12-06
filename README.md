@@ -1,6 +1,6 @@
 # MetaAvatar: Learning Animatable Clothed Human Models from Few Depth Images
 This repository contains the implementation of our paper
-[MetaAvatar: Learning Animatable Clothed Human Models from Few Depth Images](https://arxiv.org/abs/2106.11944).
+[MetaAvatar: Learning Animatable Clothed Human Models from Few Depth Images](https://openreview.net/forum?id=Q-PA3D1OsDz).
 
 You can find detailed usage instructions for training your own models and using pretrained models below.
 
@@ -18,6 +18,16 @@ If you find our code useful, please cite:
 ## Installation
 This repository has been tested on the following platform:
 1) Python 3.7, PyTorch 1.7.1 with CUDA 10.2 and cuDNN 7.6.5, Ubuntu 20.04
+
+To clone the repo, run either:
+```
+git clone --recursive https://github.com/taconite/MetaAvatar-release.git
+```
+or
+```
+git clone https://github.com/taconite/MetaAvatar-release.git
+git submodule update --init --recursive
+```
 
 First you have to make sure that you have all dependencies in place.
 The simplest way to do so, is to use [anaconda](https://www.anaconda.com/). 

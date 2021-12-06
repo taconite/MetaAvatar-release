@@ -85,4 +85,3 @@ dependencies:
     - torch-scatter==2.0.7
     - traitlets==5.1.1
     - trimesh==3.9.24
-prefix: /home/sfwang/miniconda3/envs/meta-avatar
